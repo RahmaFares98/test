@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Need For Speed Website">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+     <!-- Bootstrap CSS -->
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     
+      <!-- SweetAlert2 CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <title>Contact Us Page</title>
+     <style>
+         * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
+       
+         body {
+             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             background: linear-gradient(to right, #FAFAFA, #FFE5B4);
+ 
+         }
+        /* navigation part */
+        nav {
+             width: 100%;
+             background: #C04000;
+             height: 75px;
+             display: flex;
+             align-items: center;
+             padding: 0 20px;
+             justify-content: space-between;
+            
+         }
+         .nav-left {
+             flex: 1;
+             display: flex;
+             align-items: center;
+             
+         }
+         .nav-left h1 {
+             font-size: 32px;
+             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             color: white;
+             text-transform: uppercase;
+         }
+         .nav-left h1 a{
+             color: #FFE5B4;
+             text-decoration: none;
+         }
+         .nav-center {
+             flex: 2;
+             display: flex;
+             justify-content: center;
+         }
+         .nav-center ul {
+             display: flex;
+             align-items: center;
+             list-style: none;
+             
+         }
+         .nav-center ul li {
+             position: relative;
+         }
+         a{
+            color: #FFE5B4;
+         }
+         .nav-center ul li a {
+             text-decoration: none;
+             font-family: sans-serif;
+             color: #FFE5B4;
+             padding: 0 16px;
+             font-size: 17px;
+             font-weight: bold;
+             display: block;
+         }
+         .nav-center ul li a:hover {
+             background-color:  #55371e;
+             color: #1A4862;
+         }
+         .nav-center ul li ul {
+             position: absolute;
+             display: none;
+             background: #1A4862;           
+              border-radius: 0 0 5px 5px;
+         }
+         .nav-center ul li ul li {
+             line-height: 1;
+             width: 190px;
+             border-radius: 5px;
+             padding: 6px;
+             
+         }
+         .nav-center ul li ul li a {
+             padding: 10px 16px;
+         }
+         .nav-center ul li ul li a:hover {
+             background-color:  #55371e;
+             color: #1A4862;
+         }
+         .nav-center ul li:hover ul {
+             display: block;
+         }
+         .nav-right {
+             display: flex;
+             align-items: center;
+             
+         }
+         .nav-right a {
+             text-decoration: none;
+             font-family: sans-serif;
+             color: #FFE5B4;
+             padding: 0 16px;
+             font-size: 17px;
+             font-weight: bold;
+         }
+         .nav-right a:hover {
+             background-color:  #55371e;
+              color: #1A4862;
+         }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            border: 3px solid #ece9e9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 20px 15px 1px rgba(0, 0, 0, 0.1);
+}
+        .form-card {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-card legend {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-card label {
+            font-weight: 600;
+            font-size: 20px;
+        }
+        .form-card input, 
+        .form-card select, 
+        .form-card textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            
+        }
+        .form-card textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .form-card button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #C04000; 
+            color: #FFE5B4;
+            font-weight: bold;
+            font-size: 1rem;
+            font-size: 20px;
+        }
+        .form-card button:hover {
+            background-color: #E25822;
+        }
+       
+
+         /* Footer part*/
+         .bg-custom {
+             background-color: #C04000!important;
+         }
+         .text-custom {
+             color: #FFE5B4!important;
+         }
+         .footer-bottom {
+             background-color: #FFE5B4;
+             color: #C04000;
+             padding: 15px;
+             text-align: center;
+         }
+         .footer-bottom small {
+             color: #C04000;
+         }
+         .footer-contenta, .p {
+             color: #FFE5B4;
+         }
+         .footer-contenta:hover {
+             color: #ffffff;
+             text-decoration: underline;
+         }
+         a{
+             color: #FFE5B4!important;
+         }
+         ul li{
+            font-size: 25px;
+        }
+        .p{
+            font-size: 25px;
+        }
+        h3, h5{
+             color: #FFA000;
+             font-size: 30px;
+         }
+         .h3{
+             font-size: 40px;
+         }
+         legend{
+            color: #FFA000;
+            font-size: 50px;
+         }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1><a href="{% url 'home' %}">Need For Speed Express</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'contact_us'%}">Contact Us</a></li>
+                <li><a href="{% url 'chatbot_page'%}">ChatBot</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'sign_up'%}">Sign Up</a>
+            <a href="{% url 'sign_in'%}">Sign In</a>
+        </div>
+    </nav>
+    <section>
+        <main>
+            <div class="form-container">
+                <form id="contact-form" method="POST" action="https://api.web3forms.com/submit" class="form-card">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>Contact Us Form</legend>
+                        <div>
+                            <input type="hidden" name="access_key" value="e661dddf-d25a-41ff-a342-76a7b816df81">
+                            <label for="first_name">First Name:</label>
+                            <input type="text" id="first_name" name="first_name" required>
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" id="last_name" name="last_name" required>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <label for="comment">Comment:</label>
+                            <textarea id="comment" placeholder="Comment here ..." name="comment"></textarea>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </main>
+    </section>
+    
+    <footer class="bg-custom text-custom text-center text-lg-start">
+        <h3 class="p-3 h3">Need For Speed</h3>
+        <div class="container p-4 footer-content">
+            <div class="row"><div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Need Assistance?</h5>
+                <p class="p">Our friendly support team is here to help.</p>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!">Call Us: 1-800-123-4567</a></li>
+                    <li><a href="#!">Email Us: support@needforspeed.com</a></li>
+                    <li><a href="#!">Address: Palestine, Ramallah</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Company</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="{% url 'home'%}">Home</a></li>
+                    <li><a href="{% url 'about_us'%}">About Us</a></li>
+                    <li><a href="{% url 'services'%}">Services</a></li>
+                    <li><a href="{% url 'contact_us'%}">Contact Us</a></li>  
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Social Media</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="https://facebook.com"><iclass="fab fa-facebook-f"></i> Facebook</a></li>
+                    </li><li><a href="https://twitter.com"><iclass="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://instagram.com"><iclass="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom"><small> Copyright © Need For Speed - Where Speed Meets Excellence. All rights reserved.</small></div>
+    </footer>
+
+       <!-- Bootstrap JS and dependencies -->
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <!-- SweetAlert2 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+  
+     <!-- SweetAlert2 JavaScript -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+     <script>
+     document.addEventListener('DOMContentLoaded', function() {
+         const form = document.getElementById('contact-form');
+         const formSubmitted = sessionStorage.getItem('formSubmitted');
+ 
+         if (formSubmitted) {
+             form.reset();
+             sessionStorage.removeItem('formSubmitted');
+         }
+ 
+         form.addEventListener('submit', function(event) {
+             event.preventDefault(); // Prevent the default form submission
+             const formData = new FormData(form);
+ 
+             fetch(form.action, {
+                 method: 'POST',
+                 body: formData
+             })
+             .then(response => {
+                 if (response.ok) {
+                     form.reset(); // Clear the form fields
+                     sessionStorage.setItem('formSubmitted', 'true'); // Set the flag
+ 
+                     // SweetAlert2 success alert
+                     Swal.fire({
+                         title: 'Success!',
+                         text: 'Your message has been sent successfully.',
+                         icon: 'success',
+                         confirmButtonText: 'OK'
+                     });
+                 } else {
+                     // SweetAlert2 error alert
+                     Swal.fire({
+                         title: 'Error!',
+                         text: 'There was an error sending your message.',
+                         icon: 'error',
+                         confirmButtonText: 'OK'
+                     });
+                 }
+             })
+             .catch(error => {
+                 console.error('Error:', error);
+                 // SweetAlert2 error alert
+                 Swal.fire({
+                     title: 'Error!',
+                     text: 'There was an error sending your message.',
+                     icon: 'error',
+                     confirmButtonText: 'OK'
+                 });
+             });
+         });
+     });
+     </script>
+</body>
+</html>

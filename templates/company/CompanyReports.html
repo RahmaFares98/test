@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Admin Dashboard - Need For Speed Express">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap, Admin Dashboard">
+    <title>Admin Dashboard - Need For Speed Express</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background: linear-gradient(to left, #FAFAFA, #FFE5B4);
+        }
+        nav {
+            width: 100%;
+            background: #C04000;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+        }
+        .nav-left h1 {
+            font-size: 32px;
+            color: white;
+            text-transform: uppercase;
+        }
+        .nav-left h1 a {
+            color: #FFE5B4;
+            text-decoration: none;
+        }
+        .nav-center {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            position: relative; 
+        }
+        .nav-center ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            position: relative; 
+        }
+        .nav-center ul li {
+            position: relative;
+        }
+        a {
+            color: #FFE5B4;
+        }
+        .nav-center ul li a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+            display: block;
+        }
+        .nav-center ul li a:hover, .nav-right a:hover {
+            background-color:  #55371e;
+            color: #1A4862;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-right a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 85px;
+            color: #C04000;
+            text-shadow: #FF6347 3px 0 15px;
+            margin-bottom: 40px;
+        }
+
+        table th, table td {
+            font-weight: bold;
+            color: #d38808;
+            text-align: center;
+            padding: 15px;
+        }
+        table th {
+            background-color: #FFE5B4;
+            color: #C04000;
+        }
+
+        .btn-primary {
+            background-color: #C04000;
+            border-color: #C04000;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color:  #E25822;
+            color: #FFE5B4;
+        }
+
+        .footer-bottom {
+            background-color: #FFE5B4;
+            color: #C04000;
+            padding: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Ensure dropdown menus are hidden by default */
+        .nav-center ul .sub-menu {
+            display: none;
+            position: absolute;
+            background: #C04000;
+            border: 1px solid #C04000;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Ensure dropdown appears above other content */
+        }
+
+        /* Show dropdown menus when hovering over parent item */
+        .nav-center ul li:hover .sub-menu {
+            display: block;
+        }
+
+        /* Style for dropdown items */
+        .sub-menu .nav-link {
+            color: #FFE5B4;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .sub-menu .nav-link:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+        h3{
+            color: #b97350;
+            text-shadow: #FF6347 3px 0 15px;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+        /* notfication nav style */
+        .notification-item {
+            padding: 10px;
+            cursor: pointer;
+                }
+
+        .notification-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .notification-item.unread {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>   
+    <nav>
+        <div class="nav-left">
+            <h1><a href="{% url 'company_dashboard'%}">Company Dashboard</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#customers">
+                        <img src="https://cdn-icons-png.freepik.com/256/2673/2673061.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Customers"> Customers
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_create_customer'%}">Create a Customer</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#update-customer">Update a Customer</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'company_customers' %}">View All Customers</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#orders">
+                        <img src="https://cdn-icons-png.freepik.com/256/7345/7345729.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Orders"> Orders
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_create_order' %}">Create an Order</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'update_order' %}">Update an Order</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_orders' %}">View All Orders</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#orders">
+                        <img src="https://cdn-icons-png.freepik.com/256/16006/16006280.png?ga=GA1.1.209331547.1723160267&semt=ais_hybrid" width="20" alt="Orders"> Delivery Driver
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_create_driver' %}">Create a Delivery Driver</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'update_order' %}">Update an Order</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_drivers' %}">View All Delivery Driver</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'company_tracking_order' %}">
+                        <img src="https://cdn-icons-png.freepik.com/256/14624/14624183.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Tracking"> Tracking
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#notifications">
+                        <img src="https://cdn-icons-png.freepik.com/256/3308/3308948.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Notifications"> Notifications
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'company_reports'%}">
+                        <img src="https://cdn-icons-png.freepik.com/256/1055/1055644.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Reports"> Reports
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#settings">
+                        <img src="https://cdn-icons-png.freepik.com/256/11186/11186705.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Settings
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+        <div class="nav-right">
+            <li class="nav-item" style="list-style: none;">
+                <a class="nav-link" href="{% url 'sign_out'%}">
+                    <img src="https://cdn-icons-png.freepik.com/256/4790/4790927.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Sign Out
+                </a>
+            </li>
+        </div>
+    </nav>
+    
+    
+
+    <div class="main-content container">
+        <!-- All Data Table Section -->
+        <section id="orders" class="mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>All Orders Data</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Order Name</th>
+                                <th>Order Serial Number</th>
+                                <th>Pick up </th>
+                                <th>Drop off </th>
+                                <th>Total</th>
+                                <th>Customer Name</th>
+                                <!-- <th>Delivery Driver Name</th> -->
+                                <th>Company Name</th>
+                                <th>Order status</th>
+                                <th>Created at</th>
+                                <th>Updated at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td><a href="{% url 'admin_tracking_order_view' order.id %}">{{ order.id }}</a></td>
+                                <td>{{order.order_name}}</td>
+                                <td>{{order.order_code_number}}</td>
+                                <td>{{ order.pickup_location }}</td>
+                                <td>{{ order.pickoff_location }}</td>
+                                <td>{{ order.Total }}</td>
+                                <td>{{ order.customer.first_name }} {{ order.customer.last_name }}</td>
+                                <!-- <td>{{order.delivery.first_name}} {{order.delivery.last_name}}</td> -->
+                                <td>{{order.company.company_name}}</td>
+                                <td>{{ order.order_status }}</td>
+                                <td>{{order.created_at}}</td>
+                                <td>{{order.updated_at}}</td>
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="11" class="text-center">
+                                    <button type="submit" class="btn btn-dark">
+                                        <img src="https://cdn-icons-png.freepik.com/256/4270/4270476.png?ga=GA1.1.209331547.1723160267&semt=ais_hybrid" alt="download img" width="30">
+                                        <a href="{% url 'download_pdf' %}">Download Report</a>
+                                    </button>
+
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+       
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+
+<!-- Include Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+   
+    <!-- notifications script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const notificationMenu = document.getElementById('notification-menu');
+        const notificationCount = document.getElementById('notification-count');
+
+        function fetchNotifications() {
+            fetch('/notifications/')
+                .then(response => response.json())
+                .then(data => {
+                    notificationMenu.innerHTML = '';
+                    let unreadCount = 0;
+
+                    data.forEach(notification => {
+                        const item = document.createElement('a');
+                        item.className = 'dropdown-item notification-item';
+                        if (!notification.read) {
+                            item.classList.add('unread');
+                            unreadCount++;
+                        }
+                        item.textContent = notification.message;
+                        item.addEventListener('click', () => markAsRead(notification.id));
+                        notificationMenu.appendChild(item);
+                    });
+
+                    notificationCount.textContent = unreadCount;
+                });
+        }
+
+        function markAsRead(notificationId) {
+            fetch(`/notifications/${notificationId}/read/`, { method: 'POST' })
+                .then(() => fetchNotifications());
+        }
+
+        fetchNotifications();
+    });
+    </script>
+
+
+</body>
+</html>

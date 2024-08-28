@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Need for Speed Express</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <script src="scripts.js" defer></script> <!-- Link to your JavaScript file -->
+    <style>
+        /* Basic styling for layout purposes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 400px;
+            background-color:#C04000;
+            color: #FFE5B4;
+            height: 100vh;
+            /* position: fixed; */
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            font-size: 20px;
+            margin: 0 0 20px 0;
+        }
+        .sidebar a {
+            color: #FFE5B4;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .sidebar a:hover {
+            background-color: #eff5e0;
+            padding: 5px;
+            color: #C04000;
+        }
+       
+        img{
+            padding-right: 10px;
+            padding-top: 5px;
+        }
+        h3{
+            color:#1A4862;
+        }
+        p{
+            color:#1A4862;
+        }
+        /* Hide the sub-menu by default */
+        .sub-menu {
+            display: none;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* Show the sub-menu when hovering over the parent list item */
+        .nav-item:hover .sub-menu {
+            display: block;
+        }
+
+        /* Optional: Style for sub-menu items */
+        .sub-menu .nav-item {
+           
+            margin: 0;
+        }
+
+        .sub-menu .nav-link {
+            padding-left: 20px; /* Indent sub-menu items */
+        }
+        ul li{
+            text-decoration: none;
+            color: #FFE5B4;
+        }
+        a{
+            color: #FFE5B4;
+        }
+            
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2><a href= "{% url 'company_dashboard' %}">Company Dashboard</a></h2>
+        <ul class="nav flex-column">
+            <li class="nav-item" >
+                <a class="nav-link" href="#orders">
+                    <img src="https://cdn-icons-png.freepik.com/256/7345/7345729.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Orders"> Orders
+                </a>
+                <ul class="nav flex-column ms-3 sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'create_order'%}">Create a Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'update_order'%}">Update a Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_orders'%}">View All Companies</a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#tracking">
+                    <img src="https://cdn-icons-png.freepik.com/256/14624/14624183.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Tracking"> Tracking
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#customers">
+                    <img src="https://cdn-icons-png.freepik.com/256/2673/2673061.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Customers"> Customers
+                </a>
+                <ul class="nav flex-column ms-3 sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#create-order">Create a Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#update-order">Update a Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#update-order">View All Customers</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#notifications">
+                    <img src="https://cdn-icons-png.freepik.com/256/3308/3308948.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Notifications"> Notifications
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#reports">
+                    <img src="https://cdn-icons-png.freepik.com/256/1055/1055644.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Reports"> Reports
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#settings">
+                    <img src="https://cdn-icons-png.freepik.com/256/11186/11186705.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Settings
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign_out'%}">
+                    <img src="https://cdn-icons-png.freepik.com/256/4790/4790927.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Sign Out
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        
+    </div>
+</body>
+</html>

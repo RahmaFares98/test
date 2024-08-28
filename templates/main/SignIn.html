@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sign In Page</title>
+    <style>
+        :root {
+            --first-color: #E25822;
+            --bg-color: #C04000;
+            --white-color: #FFFFFF;
+            --input-bg: #f9f9f9;
+            --input-border: #ccc;
+            --input-focus: #E25822;
+            --button-bg: #C04000;
+            --button-hover: #E25822;
+            --text-color: #FFA000;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            border-radius: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to left, #C04000, #FFE5B4);
+            /* background-repeat: no-repeat; */
+            background-image: cover;
+        
+        }
+    
+
+        .form-container {
+            position: relative;
+            width: 770px;
+            height: 750px;
+            background: var(--white-color);
+            border-radius: 30px;
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+
+        .fluid-container {
+            position: relative;
+            bottom: 50px;
+            right: 37px;
+        }
+
+        .fluid-container .fluid-1 {
+            position: absolute;
+            top: -55px;
+            left: -50px;
+            width: 310px;
+            transform: rotate(120deg) scale(1);
+            z-index: 1;
+        }
+
+        .h1 {
+            position: relative;
+            top: 155px;
+            left: 45%;
+            font-size: 80px;
+            color: #C04000;
+            text-shadow: #FF6347 3px 0 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            z-index: 2;
+            margin-top: 175px;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: var(--text-color);
+            width: 100%;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid var(--input-border);
+            border-radius: 20px;
+            outline: none;
+            font-size: 16px;
+            background: var(--input-bg);
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--input-focus);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--button-bg);
+            color: var(--white-color);
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        a {
+            color: var(--first-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 1px solid var(--first-color);
+            margin: 20px0;
+            width: 100%;
+        }
+
+        .new-account {
+            padding: 5px 45px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <main>
+            <div class="form-container">
+                <div class="fluid-container">
+                    <img src="https://img.freepik.com/free-vector/hand-draw-orange-splash-watercolor-background_1035-17995.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="600" alt="image"
+                    id="fluid" class="fluid-1">
+                </div>
+                <div class="login-container">
+                    <h1 class="h1">Sign In</h1>
+                    <form method="post" action="{% url 'sign_in'%}">
+                        {%csrf_token%}
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required><br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required><br>
+
+                        <button type="submit" class="bg-dark text-white">Sign in</button><br>
+                        
+                    </form>
+                    <hr>
+                    <p class="new-account">I don't have an account yet! <a href="{% url 'sign_up' %}">Sign up</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

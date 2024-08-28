@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- mobile metas -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Need For Speed Website">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery code -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background: linear-gradient(to left, #FAFAFA, #FFE5B4);
+        }
+
+        /* navigation part */
+        nav {
+            width: 100%;
+            background: #C04000;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left h1 {
+            font-size: 32px;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .nav-left h1 a {
+            color: #FFE5B4;
+            text-decoration: none;
+        }
+
+        .nav-center {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-center ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-center ul li {
+            position: relative;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .nav-center ul li a:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+
+        .nav-center ul li ul {
+            position: absolute;
+            display: none;
+            background: #1A4862;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .nav-center ul li ul li a {
+            padding: 10px 16px;
+        }
+
+        .nav-center ul li ul li a:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+
+        .nav-center ul li:hover ul {
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .nav-right a:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+
+        /* body parts */
+        .btn-primary {
+            background-color: #C04000;
+            border-color: #C04000;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #E25822;
+            color: #FFE5B4;
+        }
+
+        /* Footer part */
+        .bg-custom {
+            background-color: #C04000 !important;
+        }
+
+        .text-custom {
+            color: #FFE5B4 !important;
+        }
+
+        .footer-bottom {
+            background-color: #FFE5B4;
+            color: #C04000;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .footer-bottom small {
+            color: #C04000;
+        }
+
+        .footer-contenta {
+            color: #FFE5B4;
+        }
+
+        .footer-contenta:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        a {
+            color: #FFE5B4 !important;
+        }
+
+        /* Chatbot design */
+        .chat-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 800px;
+            background-color: #da4f0a;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 35px;
+        }
+
+        #chatbot {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: #faf9f8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 12px;
+            max-width: 80%;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .userText {
+            align-self: flex-start;
+            background-color: #fef1e1;
+            border: 1px solid #fce2b3;
+        }
+
+        .botText {
+            align-self: flex-end;
+            background-color: #e9e7cf;
+            border: 1px solid #dfd8b2;
+        }
+
+        .botText em {
+            font-style: italic;
+            color: #666;
+        }
+
+        .faqOption {
+            cursor: pointer;
+            color: #ff5e00;
+            text-decoration: underline;
+            margin-bottom: 5px;
+        }
+
+        .faqOption:hover {
+            text-decoration: none;
+            color: #b33300;
+        }
+
+        #userInput {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f1f1f1;
+        }
+
+        #textInput {
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+            padding: 10px 15px;
+            width: 100%;
+            margin-right: 10px;
+        }
+
+        #buttonInput {
+            background-color: #C04000;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #buttonInput:hover {
+            background-color: #E25822;
+        }
+        h1 {
+            text-align: center;
+            font-size: 85px;
+            color: #ffffff;
+            /* text-shadow: #FF6347 3px 0 15px; */
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1><a href="{% url 'home' %}">Need For Speed Express</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'contact_us'%}">Contact Us</a></li>
+                <li><a href="{% url 'chatbot_page'%}">ChatBot</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'sign_up'%}">Sign Up</a>
+            <a href="{% url 'sign_in'%}">Sign In</a>
+        </div>
+    </nav>
+    <section>
+        <div class="chat-container">
+            <header class="bg-blue-600 text-white p-4 text-center">
+                <h1>ChatBot</h1>
+            </header>
+            <div id="chatbot">
+                <p class="botText message"><span>Hi there! How can I help you today? write hello or hi to start</span></p>
+            </div>
+            <div id="userInput">
+                <input type="text" id="textInput" name="userMessage" placeholder="Type your message...">
+                <button type="button" id="buttonInput" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <footer class="bg-custom text-custom text-center text-lg-start">
+        <h3 class="p-3 h3">Need For Speed</h3>
+        <div class="container p-4 footer-content">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Need Assistance?</h5>
+                    <p class="p">Our friendly support team is here to help.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#!">Call Us: 1-800-123-4567</a></li>
+                        <li><a href="#!">Email Us: support@needforspeed.com</a></li>
+                        <li><a href="#!">Address: Palestine, Ramallah</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Company</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="{% url 'home'%}">Home</a></li>
+                        <li><a href="{% url 'about_us'%}">About Us</a></li>
+                        <li><a href="{% url 'services'%}">Services</a></li>
+                        <li><a href="{% url 'contact_us'%}">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Social Media</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://facebook.com"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="https://instagram.com"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><small> Copyright © Need For Speed - Where Speed Meets Excellence. All rights reserved.</small></div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function getUserResponse(userText) {
+            if (!userText) return;  // Don't send an empty message
+
+            var userHTML = "<p class='userText message'>User: <span>" + userText + "</span></p>";
+            $('#textInput').val("");  // Clear input field
+
+            $('#chatbot').append(userHTML);  // Add user message to chat
+
+            // Add thinking message
+            var thinkingHTML = "<p class='botText message'><span>Chatbot: <em>Thinking...</em></span></p>";
+            $('#chatbot').append(thinkingHTML);
+
+            // Scroll to the bottom
+            $('#chatbot').scrollTop($('#chatbot')[0].scrollHeight);
+
+            $.get('/get-response', {userMessage: userText}, function(data) {
+                // Replace thinking message with actual response
+                var responseHTML;
+                if (userText.toLowerCase() === "i want to ask a few questions about your website") {
+                    responseHTML = "<span>Chatbot: Here are some questions you can ask:</span><br>" +
+                        "<span class='faqOption' data-question='what areas do you serve?'>1. What areas do you serve?</span><br> <br>" +
+                        "<span class='faqOption' data-question='how can i place an order?'>2. How can I place an order?</span><br> <br>" +
+                        "<span class='faqOption' data-question='how do i track my delivery?'>3. How do I track my delivery?</span><br> <br>" +
+                        "<span class='faqOption' data-question='can i schedule a delivery for a specific time?'>4. Can I schedule a delivery for a specific time?</span><br> <br>" +
+                        "<span class='faqOption' data-question='how do i update my delivery address?'>5. How do I update my delivery address?<br></span>";
+                } else {
+                    responseHTML = "<span>Chatbot: " + data + "</span>";
+                }
+                $('#chatbot').find('.botText:last').html(responseHTML);
+                $('#chatbot').scrollTop($('#chatbot')[0].scrollHeight);  // Auto-scroll to the bottom
+            });
+        }
+
+        $('#buttonInput').click(function(event) {
+            event.preventDefault();
+            var userText = $('#textInput').val().trim();
+            getUserResponse(userText);
+        });
+
+        $('#textInput').keypress(function(e) {
+            if (e.which == 13) {  // Enter key pressed
+                e.preventDefault();
+                var userText = $('#textInput').val().trim();
+                getUserResponse(userText);
+            }
+        });
+
+        // Handle FAQ option clicks
+        $(document).on('click', '.faqOption', function() {
+            var question = $(this).data('question');
+            getUserResponse(question);
+        });
+    </script>
+</body>
+
+</html>

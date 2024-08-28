@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- mobile metas -->
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Need For Speed Website">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background: linear-gradient(to left, #FAFAFA, #FFE5B4);
+
+        }
+
+        /* navigation part */
+        nav {
+            width: 100%;
+            background: #C04000;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+
+        }
+
+        .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .nav-left h1 {
+            font-size: 32px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .nav-left h1 a {
+            color: #FFE5B4;
+            text-decoration: none;
+        }
+
+        .nav-center {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-center ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+
+        }
+
+        .nav-center ul li {
+            position: relative;
+        }
+
+        a {
+            color: #FFE5B4;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .nav-center ul li a:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+
+        .nav-center ul li ul {
+            position: absolute;
+            display: none;
+            background: #1A4862;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .nav-center ul li ul li {
+            line-height: 1;
+            width: 190px;
+            border-radius: 5px;
+            padding: 6px;
+
+        }
+
+        .nav-center ul li ul li a {
+            padding: 10px 16px;
+        }
+
+        .nav-center ul li ul li a:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+
+        .nav-center ul li:hover ul {
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .nav-right a:hover {
+            background-color: #55371e;
+            color: #1A4862;
+
+        }
+
+        /* body parts*/
+
+
+        .btn-primary {
+            background-color: #C04000;
+            border-color: #C04000;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #E25822;
+            color: #FFE5B4;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+        }
+
+        .card-img-top {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .my-5 {
+            margin-top: 3rem !important;
+            margin-bottom: 3rem !important;
+        }
+
+        .text-muted {
+            color: #6c757d !important;
+        }
+
+        /* Footer part*/
+        .bg-custom {
+            background-color: #C04000 !important;
+        }
+
+        .text-custom {
+            color: #FFE5B4 !important;
+        }
+
+        .footer-bottom {
+            background-color: #FFE5B4;
+            color: #C04000;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .footer-bottom small {
+            color: #C04000;
+        }
+
+        .footer-contenta,
+        .p {
+            color: #FFE5B4;
+        }
+
+        .footer-contenta:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        a {
+            color: #FFE5B4 !important;
+        }
+        /* card part */
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 0 10px;
+           
+        }
+        .wrapper-card {
+            width: 300px;
+            height: 400px;
+            padding: 1rem;
+            background: #FAFAFA;
+            position: relative;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wrapper-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        
+        .wrapper-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+          
+        }
+
+        .wrapper-card .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .wrapper-card:hover .info {
+            opacity: 1;
+        }
+
+
+        .wrapper-card .info h2 {
+            margin: 0;
+        }
+
+        .wrapper-card .info p {
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+
+        .wrapper-card .info .btn {
+            text-decoration: none;
+            padding: 0.5rem;
+            background-color: #fff;
+            color: #000;
+            font-size: 14px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: 22px;
+            font-style: italic;
+            color: #d38808;
+            /* color: #1A4862; */
+
+        }
+
+        .h3,
+        .large-heading {
+            text-align: center;
+            font-size: 50px;
+            color: #FFA000;
+
+        }
+
+        ul li {
+            font-weight: bold;
+            color: #d38808;
+            font-size: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 85px;
+            color: #C04000;
+            text-shadow: #FF6347 3px 0 15px;
+        }
+
+        h5 {
+            color: #FFA000;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1><a href="{% url 'home' %}">Need For Speed Express</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'contact_us'%}">Contact Us</a></li>
+                <li><a href="{% url 'chatbot_page'%}">ChatBot</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'sign_up'%}">Sign Up</a>
+            <a href="{% url 'sign_in'%}">Sign In</a>
+        </div>
+    </nav>
+    <section>
+        <main class="container my-5">
+            <h1 class="text-center mb-4">Welcome to Need For Speed!</h1>
+            <p class="text-center mb-4">Experience delivery like never before—fast, reliable, and efficient. Whether
+                you’re craving a late-night snack or need urgent documents delivered, we’ve got you covered with our
+                ultra-speedy service.</p>
+            <div class="text-center mb-4">
+                <a href="{% url 'sign_in'%}" class="btn btn-primary mr-2">Order Now</a>
+                <a href="{% url 'sign_in'%}" class="btn btn-primary">Track Your Delivery</a>
+            </div>
+            <hr>
+            <h3 class="my-4 h3">How It Works</h3>
+            <div class="wrapper">
+                <div class="wrapper-card">
+                    <img src="https://img.freepik.com/premium-photo/smartphone-screen-showing-delivery-scooter-balloons-buy-button-orange-background-vertical-m_896558-77458.jpg?w=740"
+                        alt="Place an Order">
+                    <div class="info">
+                        <h2>Place an Order</h2>
+                        <p>Choose from a wide range of items and place your order directly on our website or app.</p>
+                    </div>
+                </div>
+                <div class="wrapper-card">
+                    <img src="https://www.shutterstock.com/image-vector/red-shopping-baskets-parcel-box-600nw-2029874339.jpg"
+                        alt="Fast Dispatch">
+                    <div class="info">
+                        <h2>Fast Dispatch</h2>
+                        <p>We immediately process your order and dispatch it with our network of speedy couriers.</p>
+                    </div>
+                </div>
+                <div class="wrapper-card">
+                    <img src="https://as1.ftcdn.net/v2/jpg/01/96/86/98/1000_F_196869845_CTClh3eL7h1DYOnrkrCPN2bq134i4Mm7.jpg"
+                        alt="Quick Delivery">
+                    <div class="info">
+                        <h2>Quick Delivery</h2>
+                        <p>Enjoy your items delivered straight to your door in under an hour!</p>
+                    </div>
+                </div>
+                <div class="wrapper-card">
+                    <img src="https://img.freepik.com/free-photo/3d-view-map_23-2150472741.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                        alt="Real-Time Tracking">
+                    <div class="info">
+                        <h2>Real-Time Tracking</h2>
+                        <p>Monitor your delivery in real-time and get updates every step of the way.</p>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <!--  <ol class="text-muted">
+                 <li>Place Your Order: Choose from a wide range of items and place your order directly on our website or app.</li> 
+                 <li>Fast Dispatch: We immediately process your order and dispatch it with our network of speedy couriers.</li>
+                <li>Real-Time Tracking: Monitor your delivery in real-time and get updates every step of the way.</li> 
+                 <li>Quick Delivery: Enjoy your items delivered straight to your door in under an hour!</li>
+            </ol> -->
+            <br>
+            <hr>
+
+            <h3 class="my-4 h3">Why Choose Us?</h3>
+            <ul class="text-muted">
+                <li>24/7 Availability: Need something delivered at 3 AM? We’re here for you, around the clock.</li>
+                <li>Instant Updates: Track your delivery live and get notified as it approaches.</li>
+                <li>No Minimum Order: Order just one item or multiple—no minimum required.</li>
+                <li>Reliable Service: Our experienced couriers ensure your items are handled with care and arrive
+                    quickly.</li>
+            </ul>
+            <hr>
+
+            <h3 class="large-heading text-center my-5">Users Feedback</h3>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/premium-photo/attractive-handsome-smiling-man-portrait-studio-shot_266745-1135.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                            class="card-img-top" alt="Jamie R.">
+                        <div class="card-body">
+                            <h5 class="card-title">Jamie R.</h5>
+                            <p class="card-text">"Need For Speed truly lives up to its name! I got my package in record
+                                time, and the process was so easy."</p>
+                            <br>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-photo/man-isolated-showing-emotions-end-gestures_1303-30070.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                            class="card-img-top" alt="Alex P.">
+                        <div class="card-body">
+                            <h5 class="card-title">Alex P.</h5>
+                            <p class="card-text">"I was amazed at how fast they delivered my food. Highly recommend for
+                                anyone in a hurry!"</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/premium-photo/portrait-smiling-man-standing-against-orange-background_1048944-28244921.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                            class="card-img-top" alt="Taylor S.">
+                        <div class="card-body">
+                            <h5 class="card-title">Taylor S.</h5>
+                            <p class="card-text">"From ordering to delivery, everything was seamless and fast. Highly
+                                recommend to anyone in need of quick service."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <footer class="bg-custom text-custom text-center text-lg-start">
+        <h3 class="p-3 h3">Need For Speed</h3>
+        <div class="container p-4 footer-content">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Need Assistance?</h5>
+                    <p class="p">Our friendly support team is here to help.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#!">Call Us: 1-800-123-4567</a></li>
+                        <li><a href="#!">Email Us: support@needforspeed.com</a></li>
+                        <li><a href="#!">Address: Palestine, Ramallah</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Company</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="{% url 'home'%}">Home</a></li>
+                        <li><a href="{% url 'about_us'%}">About Us</a></li>
+                        <li><a href="{% url 'services'%}">Services</a></li>
+                        <li><a href="{% url 'contact_us'%}">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Social Media</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://facebook.com"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="https://instagram.com"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><small> Copyright © Need For Speed - Where Speed Meets Excellence. All rights
+                reserved.</small></div>
+    </footer>
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

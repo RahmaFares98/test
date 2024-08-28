@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Admin Dashboard - Need For Speed Express">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap, Admin Dashboard">
+    <title>Create Delivery Driver - Need For Speed Express Company</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert2 Bootstrap and JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background: linear-gradient(to left, #FAFAFA, #FFE5B4);
+        }
+        nav {
+            width: 100%;
+            background: #C04000;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+        }
+        .nav-left h1 {
+            font-size: 32px;
+            color: white;
+            text-transform: uppercase;
+        }
+        .nav-left h1 a {
+            color: #FFE5B4;
+            text-decoration: none;
+        }
+        .nav-center {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            position: relative; /* Required for dropdown positioning */
+        }
+        .nav-center ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            position: relative; /* Required for dropdown positioning */
+        }
+        .nav-center ul li {
+            position: relative;
+        }
+        a {
+            color: #FFE5B4;
+        }
+        .nav-center ul li a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+            display: block;
+        }
+        .nav-center ul li a:hover, .nav-right a:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-right a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 85px;
+            color: #C04000;
+            text-shadow: #FF6347 3px 0 15px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .card-header {
+            background-color: #C04000;
+            color: #FFE5B4;
+            text-align: center;
+        }
+
+        .card-body {
+            background-color: #FFE5B4;
+            color: #C04000;
+        }
+
+        .form-control {
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #C04000;
+            border-color: #C04000;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #E25822;
+            color: #FFE5B4;
+        }
+
+        .footer-bottom {
+            background-color: #FFE5B4;
+            color: #C04000;
+            padding: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Ensure dropdown menus are hidden by default */
+        .nav-center ul .sub-menu {
+            display: none;
+            position: absolute;
+            background: #C04000;
+            border: 1px solid #C04000;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Ensure dropdown appears above other content */
+        }
+
+        /* Show dropdown menus when hovering over parent item */
+        .nav-center ul li:hover .sub-menu {
+            display: block;
+        }
+
+        /* Style for dropdown items */
+        .sub-menu .nav-link {
+            color: #FFE5B4;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .sub-menu .nav-link:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+        
+        h2 {
+            color: #d8c1b5;
+            text-shadow: #FF6347 3px 0 15px;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1><a href="{% url 'company_dashboard'%}">Company Dashboard</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#customers">
+                        <img src="https://cdn-icons-png.freepik.com/256/2673/2673061.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Customers"> Customers
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_create_customer'%}">Create a Customer</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#update-customer">Update a Customer</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'company_customers' %}">View All Customers</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#orders">
+                        <img src="https://cdn-icons-png.freepik.com/256/7345/7345729.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Orders"> Orders
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_create_order' %}">Create an Order</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'update_order' %}">Update an Order</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_orders' %}">View All Orders</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#orders">
+                        <img src="https://cdn-icons-png.freepik.com/256/16006/16006280.png?ga=GA1.1.209331547.1723160267&semt=ais_hybrid" width="20" alt="Orders"> Delivery Driver
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_create_driver' %}">Create a Delivery Driver</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'update_order' %}">Update an Order</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'company_drivers' %}">View All Delivery Driver</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'company_tracking_order' %}">
+                        <img src="https://cdn-icons-png.freepik.com/256/14624/14624183.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Tracking"> Tracking
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#notifications">
+                        <img src="https://cdn-icons-png.freepik.com/256/3308/3308948.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Notifications"> Notifications
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'company_reports'%}">
+                        <img src="https://cdn-icons-png.freepik.com/256/1055/1055644.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Reports"> Reports
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#settings">
+                        <img src="https://cdn-icons-png.freepik.com/256/11186/11186705.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Settings
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+        <div class="nav-right">
+            <li class="nav-item" style="list-style: none;">
+                <a class="nav-link" href="{% url 'sign_out'%}">
+                    <img src="https://cdn-icons-png.freepik.com/256/4790/4790927.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Sign Out
+                </a>
+            </li>
+        </div>
+    </nav>
+    
+
+    <!-- Main content -->
+    <main role="main" class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Create Delivery Driver</h2>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'company_create_driver' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address"> Address</label>
+                        <input type="text" id="address" name="address" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number:</label>
+                        <input type="text" id="phone_number" name="phone_number" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="license"> License</label>
+                        <input type="text" id="license" name="license" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <input type="text" id="status" name="status" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="worklocation"> Working Location</label>
+                        <input type="text" id="worklocation" name="worklocation" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Handle form submission
+          const form = document.querySelector('form');
+          
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+        
+            Swal.fire({
+              title: 'Do you want to save the changes?',
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: 'Save',
+              denyButtonText: `Don't save`
+            }).then(async (result) => {
+              if (result.isConfirmed) {
+                // Collect form data
+                const formData = new FormData(form);
+                
+                // Use fetch API to submit the form asynchronously
+                try {
+                  const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                      'X-Requested-With': 'XMLHttpRequest', // To handle the request properly in Django
+                    },
+                  });
+                  
+                  if (response.ok) {
+                    // Show success alert
+                    Swal.fire('Saved!', '', 'success').then(() => {
+                      window.location.href = '{% url "company_drivers" %}'; // Redirect to orders page
+                    });
+                  } else {
+                    // Handle errors if necessary
+                    Swal.fire('Error', 'There was a problem saving your changes.', 'error');
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  Swal.fire('Error', 'There was a problem saving your changes.', 'error');
+                }
+        
+              } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info');
+                // Redirect to orders page if changes are not saved
+                window.location.href = '{% url "company_create_driver" %}';
+              }
+            });
+          });
+        
+          // Handle cancel button click
+          document.querySelector('.btn-secondary').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default action
+            window.location.href = '{% url "company_drivers" %}'; // Redirect to orders page
+          });
+        });
+        </script>
+</body>
+</html>

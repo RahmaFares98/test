@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Edit Company - Need For Speed Admin">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap">
+    <title>Edit Company - Need For Speed Admin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert Bootstrap and JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+        body {
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background: linear-gradient(to left, #FAFAFA, #FFE5B4);
+        }
+        nav {
+            width: 100%;
+            background: #C04000;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+        }
+        .nav-left h1 {
+            font-size: 32px;
+            color: white;
+            text-transform: uppercase;
+        }
+        .nav-left h1 a {
+            color: #FFE5B4;
+            text-decoration: none;
+        }
+        .nav-center {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            position: relative; /* Required for dropdown positioning */
+        }
+        .nav-center ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            position: relative; /* Required for dropdown positioning */
+        }
+        .nav-center ul li {
+            position: relative;
+        }
+        a {
+            color: #FFE5B4;
+        }
+        .nav-center ul li a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+            display: block;
+        }
+        .nav-center ul li a:hover, .nav-right a:hover {
+            background-color:  #55371e;
+            color: #1A4862;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-right a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+         /* Ensure dropdown menus are hidden by default */
+         .nav-center ul .sub-menu {
+            display: none;
+            position: absolute;
+            background: #C04000;
+            border: 1px solid #C04000;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Ensure dropdown appears above other content */
+        }
+
+        /* Show dropdown menus when hovering over parent item */
+        .nav-center ul li:hover .sub-menu {
+            display: block;
+        }
+
+        /* Style for dropdown items */
+        .sub-menu .nav-link {
+            color: #FFE5B4;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .sub-menu .nav-link:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+
+        .container {
+            margin-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 85px;
+            color: #C04000;
+            text-shadow: #FF6347 3px 0 15px;
+            margin-bottom: 40px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #C04000;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #C04000;
+        }
+
+        .btn-primary {
+            background-color: #C04000;
+            border-color: #C04000;
+            font-weight: bold;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color:  #E25822;
+            color: #FFE5B4;
+        }
+
+        .footer-bottom {
+            background-color: #FFE5B4;
+            color: #C04000;
+            padding: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1><a href="{% url 'admin_dashboard'%}">Admin Dashboard</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="#"><img src="https://cdn-icons-png.freepik.com/256/746/746914.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Companies"> Companies</a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_create_comapny' %}">Create a Company</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#update-customer">Update a Customer</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_companies' %}">View All Companies</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#customers">
+                        <img src="https://cdn-icons-png.freepik.com/256/2673/2673061.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Customers"> Customers
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_create_customer'%}">Create a Customer</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#update-customer">Update a Customer</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'admin_users' %}">View All Customers</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#orders">
+                        <img src="https://cdn-icons-png.freepik.com/256/7345/7345729.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Orders"> Orders
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_order' %}">Create an Order</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'update_order' %}">Update an Order</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_orders' %}">View All Orders</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin_tracking_order'%}">
+                        <img src="https://cdn-icons-png.freepik.com/256/14624/14624183.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Tracking"> Tracking
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://cdn-icons-png.freepik.com/256/3308/3308948.png" width="20" alt="Notifications"> Notifications <span id="notification-count" class="badge badge-danger">{{ unread_count }}</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="notification-menu">
+                        {% for notification in notifications %}
+                            <a class="dropdown-item" href="{{ notification.link }}">
+                                {% if not notification.is_read %}
+                                    <strong>{{ notification.message }}</strong>
+                                {% else %}
+                                    {{ notification.message }}
+                                {% endif %}
+                            </a>
+                        {% empty %}
+                            <a class="dropdown-item">No notifications</a>
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin_reports' %}">
+                        <img src="https://cdn-icons-png.freepik.com/256/1055/1055644.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Reports"> Reports
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#settings">
+                        <img src="https://cdn-icons-png.freepik.com/256/11186/11186705.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Settings
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+        <div class="nav-right">
+            <li class="nav-item" style="list-style: none;">
+                <a class="nav-link" href="{% url 'sign_out'%}">
+                    <img src="https://cdn-icons-png.freepik.com/256/4790/4790927.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Sign Out
+                </a>
+            </li>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Update Company Information</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="company_name">Company Name</label>
+                <input type="text" class="form-control" id="company_name" name="company_name" value="{{ company.company_name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" value="{{ company.address }}" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ company.phone_number }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ company.email }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </main>
+
+    <footer class="footer-bottom">
+        <small>&copy; Need For Speed - Company Management. All rights reserved.</small>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Handle form submission
+          const form = document.querySelector('form');
+          
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+        
+            Swal.fire({
+              title: 'Do you want to save the changes?',
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: 'Save',
+              denyButtonText: `Don't save`
+            }).then(async (result) => {
+              if (result.isConfirmed) {
+                // Collect form data
+                const formData = new FormData(form);
+                
+                // Use fetch API to submit the form asynchronously
+                try {
+                  const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                      'X-Requested-With': 'XMLHttpRequest', // To handle the request properly in Django
+                    },
+                  });
+                  
+                  if (response.ok) {
+                    // Show success alert
+                    Swal.fire('Saved!', '', 'success').then(() => {
+                      window.location.href = '{% url "admin_company" %}'; // Redirect to driver page
+                    });
+                  } else {
+                    // Handle errors if necessary
+                    Swal.fire('Error', 'There was a problem saving your changes.', 'error');
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  Swal.fire('Error', 'There was a problem saving your changes.', 'error');
+                }
+        
+              } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info');
+                // Redirect to orders page if changes are not saved
+                window.location.href = '{% url "admin_company_edit" company.id %}';
+              }
+            });
+          });
+        
+          // Handle cancel button click
+          document.querySelector('.btn-secondary').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default action
+            window.location.href = '{% url "admin_company" %}'; // Redirect to orders page
+          });
+        });
+        </script>
+</body>
+</html>

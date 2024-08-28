@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Need For Speed Website">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Services Page</title>
+    <style>
+        * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
+       
+         body {
+             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             background: linear-gradient(to left, #FAFAFA, #FFE5B4);
+ 
+         }
+        /* navigation part */
+        nav {
+             width: 100%;
+             background: #C04000;
+             height: 75px;
+             display: flex;
+             align-items: center;
+             padding: 0 20px;
+             justify-content: space-between;
+            
+         }
+         .nav-left {
+             flex: 1;
+             display: flex;
+             align-items: center;
+             
+         }
+         .nav-left h1 {
+             font-size: 32px;
+             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             color: white;
+             text-transform: uppercase;
+         }
+         .nav-left h1 a{
+             color: #FFE5B4;
+             text-decoration: none;
+         }
+         .nav-center {
+             flex: 2;
+             display: flex;
+             justify-content: center;
+         }
+         .nav-center ul {
+             display: flex;
+             align-items: center;
+             list-style: none;
+             
+         }
+         .nav-center ul li {
+             position: relative;
+         }
+         a{
+            color: #FFE5B4;
+         }
+         .nav-center ul li a {
+             text-decoration: none;
+             font-family: sans-serif;
+             color: #FFE5B4;
+             padding: 0 16px;
+             font-size: 17px;
+             font-weight: bold;
+             display: block;
+         }
+         .nav-center ul li a:hover {
+             background-color:  #55371e;
+             color: #1A4862;
+         }
+         .nav-center ul li ul {
+             position: absolute;
+             display: none;
+             background: #1A4862;           
+              border-radius: 0 0 5px 5px;
+         }
+         .nav-center ul li ul li {
+             line-height: 1;
+             width: 190px;
+             border-radius: 5px;
+             padding: 6px;
+             
+         }
+         .nav-center ul li ul li a {
+             padding: 10px 16px;
+         }
+         .nav-center ul li ul li a:hover {
+             background-color:  #55371e;
+             color: #1A4862;
+         }
+         .nav-center ul li:hover ul {
+             display: block;
+         }
+         .nav-right {
+             display: flex;
+             align-items: center;
+             
+         }
+         .nav-right a {
+             text-decoration: none;
+             font-family: sans-serif;
+             color: #FFE5B4;
+             padding: 0 16px;
+             font-size: 17px;
+             font-weight: bold;
+         }
+         .nav-right a:hover {
+             background-color:  #55371e;
+              color: #1A4862;
+         }
+         h2 {
+             font-size: 2.5rem;
+             margin-bottom: 10px;
+             color: #FFA000;
+         }
+         p{
+            color:#55371e;
+            font-size: 25px;
+         }
+         h4{
+             color:#C04000;
+         }
+         .container{
+             overflow: hidden;
+         }
+ 
+          /* Footer part*/
+          .bg-custom {
+             background-color: #C04000!important;
+         }
+         .text-custom {
+             color: #FFE5B4!important;
+         }
+         .footer-bottom {
+             background-color: #FFE5B4;
+             color: #C04000;
+             padding: 15px;
+             text-align: center;
+         }
+         .footer-bottom small {
+             color: #C04000;
+         }
+         .footer-contenta, .p {
+             color: #FFE5B4;
+         }
+         .footer-contenta:hover {
+             color: #ffffff;
+             text-decoration: underline;
+         }
+         a{
+             color: #FFE5B4!important;
+         }
+         .fluid-container .fluid-1 {
+             position: absolute;
+             top: -104px;
+             right: 28px;
+             width: 227px;
+             transform: rotate(120deg) scale(1);
+             z-index: 1;
+         }
+         .container{
+             border: 0px solid white;
+         }
+         .card{
+             border: 0px solid rgba(0,0,0,.125)
+         }
+         h3, h5{
+             color: #FFA000;
+             font-size: 30px;
+         }
+         ul li{
+             font-size: 25px;
+         }
+         h1{
+            color: #FFA000;
+             font-size: 50px;
+         }
+         p{
+             font-size: 20px;
+         }
+         .h3{
+             font-size: 40px;
+         }
+        
+     </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1><a href="#" >Need For Speed Express</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'services' %}">Services</a>
+                    <!-- <ul>
+                        <li><a href="#">Online Ordering System</a></li>
+                        <li><a href="#">Real-Time Tracking</a></li>
+                        <li><a href="#">Customer Support</a></li>
+                    </ul> -->
+                </li>
+                <li><a href="{% url 'contact_us'%}">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'sign_up'%}">Sign Up</a>
+            <a href="{% url 'sign_in'%}">Sign In</a>
+        </div>
+    </nav>
+    <section>
+        <main>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 content-container">
+                        <!-- Content container with padding -->
+                        <div class="p-4">
+                            <h1 class="large-heading text-center my-5">Services</h1>
+                            <p>Our team of professionals provides the highest level of customer care and is always happy to assist you. Delivery Express offers a diversified fleet which consists of various logistics support functions including cars and cooling vans suitable for different types of products.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 image-container text-center p-4">
+                        <!-- Image with responsive class -->
+                        <img src="https://img.freepik.com/free-vector/delivery-online-shipping-services-online-order-tracking-delivery-home-office-courier-by-truck-scooter-bicycle-parcel-send-location-pins-mobile-phone-by-delivery-man_1150-58774.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" alt="Delivery Services" class="img-fluid">
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="mt-4">
+                        <h1 class="large-heading text-center my-5">Our Website Services</h1>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <img src="https://img.freepik.com/free-psd/3d-rendering-delivery-sales-blank-banner_23-2151558587.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" class="card-img-top" alt="Online Ordering System">
+                                    <div class="card-body">
+                                        <h2 class="card-title">Online Ordering System</h2>
+                                        <h4>Convenient and Efficient Ordering</h4>
+                                        <p class="card-text">Our Online Ordering System is designed to provide you with a seamless and hassle-free experience. Whether you’re ordering for a personal delivery or managing bulk shipments, our intuitive platform allows you to place orders quickly and efficiently from any device. Track your order status, modify your delivery details, and manage your preferences with just a few clicks. Experience the convenience of managing all your delivery needs from one central hub.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <img src="https://img.freepik.com/premium-photo/fast-online-delivery-service-with-real-time-tracking-scooter-transportation-packages_896558-77515.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" class="card-img-top" alt="Real-Time Tracking">
+                                    <div class="card-body">
+                                        <h2 class="card-title">Real-Time Tracking</h2>
+                                        <h4>Stay Informed Every Step of the Way</h4>
+                                        <p class="card-text">With our Real-Time Tracking service, you’ll always know the exact location of your shipment. Our advanced tracking technology provides live updates on the status of your delivery, from dispatch to arrival. Receive notifications and estimated delivery times directly to your device, ensuring you are always informed and can plan accordingly. Whether you’re waiting for a critical shipment or keeping tabs on a package, our real-time tracking offers transparency and peace of mind.</p>
+                                    
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <img src="https://img.freepik.com/free-vector/organic-flat-customer-support-illustration_23-2148899134.jpg?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" class="card-img-top" alt="Customer Support">
+                                    <div class="card-body">
+                                        <h2 class="card-title">Customer Support</h2>
+                                        <h4>Here to Help You, Anytime</h4>
+                                        <p class="card-text">At Need for Speed Express, we pride ourselves on our exceptional Customer Support. Our dedicated team is available to assist you with any inquiries, issues, or special requests you may have. Whether you need help with an order, have questions about our services, or require assistance with tracking, our knowledgeable support staff is here to provide prompt and effective solutions. Reach out to us via phone, email, or live chat, and experience the superior customer care that sets us apart.</p>
+                                    <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </main>
+    </section>
+    
+
+    <footer class="bg-custom text-custom text-center text-lg-start">
+        <h3 class="p-3">Need For Speed</h3>
+        <div class="container p-4 footer-content">
+            <div class="row"><div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Need Assistance?</h5>
+                <p>Our friendly support team is here to help.</p>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!">Call Us: 1-800-123-4567</a></li>
+                    <li><a href="#!">Email Us: support@needforspeed.com</a></li>
+                    <li><a href="#!">Address: Palestine, Ramallah</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Company</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!">About Us</a></li>
+                    <li><a href="#!">Privacy Policy</a></li>
+                    <li><a href="#!">Terms of Service</a></li>
+                    <li><a href="#!">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Social Media</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="https://facebook.com"><iclass="fab fa-facebook-f"></i> Facebook</a>
+                    </li><li><a href="https://twitter.com"><iclass="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://instagram.com"><iclass="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom"><small> Copyright © Need For Speed - Where Speed Meets Excellence. All rights reserved.</small></div>
+    </footer>
+
+
+
+
+             <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

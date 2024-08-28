@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Order Management - Need For Speed Admin">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap">
+    <title>Order Management - Need For Speed Admin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert Bootstrap and JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+        body {
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background: linear-gradient(to left, #FAFAFA, #FFE5B4);
+        }
+        nav {
+            width: 100%;
+            background: #C04000;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+        }
+        .nav-left h1 {
+            font-size: 32px;
+            color: white;
+            text-transform: uppercase;
+        }
+        .nav-left h1 a {
+            color: #FFE5B4;
+            text-decoration: none;
+        }
+        .nav-center {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            position: relative; /* Required for dropdown positioning */
+        }
+        .nav-center ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            position: relative; /* Required for dropdown positioning */
+        }
+        .nav-center ul li {
+            position: relative;
+        }
+        a {
+            color: #FFE5B4;
+        }
+        .nav-center ul li a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+            display: block;
+        }
+        .nav-center ul li a:hover, .nav-right a:hover {
+            background-color:  #55371e;
+            color: #1A4862;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-right a {
+            text-decoration: none;
+            font-family: sans-serif;
+            color: #FFE5B4;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+         /* Ensure dropdown menus are hidden by default */
+         .nav-center ul .sub-menu {
+            display: none;
+            position: absolute;
+            background: #C04000;
+            border: 1px solid #C04000;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Ensure dropdown appears above other content */
+        }
+
+        /* Show dropdown menus when hovering over parent item */
+        .nav-center ul li:hover .sub-menu {
+            display: block;
+        }
+
+        /* Style for dropdown items */
+        .sub-menu .nav-link {
+            color: #FFE5B4;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .sub-menu .nav-link:hover {
+            background-color: #55371e;
+            color: #1A4862;
+        }
+
+        .container {
+            margin-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 85px;
+            color: #C04000;
+            text-shadow: #FF6347 3px 0 15px;
+            margin-bottom: 40px;
+        }
+
+        table th, table td {
+            font-weight: bold;
+            color: #d38808;
+            text-align: center;
+            padding: 15px;
+        }
+        table th {
+            background-color: #FFE5B4;
+            color: #C04000;
+        }
+
+        .btn-primary {
+            background-color: #C04000;
+            border-color: #C04000;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color:  #E25822;
+            color: #FFE5B4;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            font-weight: bold;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            color: #FFE5B4;
+        }
+
+        .footer-bottom {
+            background-color: #FFE5B4;
+            color: #C04000;
+            padding: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h3{
+            color: #b97350;
+            text-shadow: #FF6347 3px 0 15px;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1><a href="{% url 'admin_dashboard'%}">Admin Dashboard</a></h1>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="#"><img src="https://cdn-icons-png.freepik.com/256/746/746914.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Companies"> Companies</a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_create_comapny' %}">Create a Company</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#update-customer">Update a Customer</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_companies' %}">View All Companies</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#customers">
+                        <img src="https://cdn-icons-png.freepik.com/256/2673/2673061.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Customers"> Customers
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_create_customer'%}">Create a Customer</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#update-customer">Update a Customer</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'admin_users' %}">View All Customers</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#orders">
+                        <img src="https://cdn-icons-png.freepik.com/256/7345/7345729.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Orders"> Orders
+                    </a>
+                    <ul class="nav flex-column ms-3 sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_order' %}">Create an Order</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'update_order' %}">Update an Order</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_orders' %}">View All Orders</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin_tracking_order'%}">
+                        <img src="https://cdn-icons-png.freepik.com/256/14624/14624183.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Tracking"> Tracking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#notifications">
+                        <img src="https://cdn-icons-png.freepik.com/256/3308/3308948.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Notifications"> Notifications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#reports">
+                        <img src="https://cdn-icons-png.freepik.com/256/1055/1055644.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Reports"> Reports
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#settings">
+                        <img src="https://cdn-icons-png.freepik.com/256/11186/11186705.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <li class="nav-item" style="list-style: none;">
+                <a class="nav-link" href="{% url 'sign_out'%}">
+                    <img src="https://cdn-icons-png.freepik.com/256/4790/4790927.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Sign Out
+                </a>
+            </li>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <h1>Notifications Order Management</h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>Orders</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Created Date</th>
+                            <th>Pick Up</th>
+                            <th>Drop Off</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customer.first_name }} {{ order.customer.last_name }}</td>
+                            <td>{{ order.Total }}</td>
+                            <td>{{ order.created_at }}</td>
+                            <td>{{ order.pickup_location }}</td>
+                            <td>{{ order.pickoff_location }}</td>
+                            <td>{{ order.order_status }}</td>
+                            <td>
+                                <a href="{% url 'admin_order_edit' order.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{% url 'admin_order_delete' order.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+
+    <footer class="footer-bottom">
+        <small>&copy; Need For Speed - Order Management. All rights reserved.</small>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Function to handle the delete button click
+        function handleDeleteClick(event) {
+          event.preventDefault(); // Prevent the default link behavior
+      
+          const deleteUrl = this.getAttribute('href'); // Get the URL from the href attribute
+      
+          const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: "btn btn-success",
+              cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+          });
+      
+          swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Redirect to the delete URL if confirmed
+              window.location.href = deleteUrl;
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Your imaginary file is safe :)",
+                icon: "error"
+              });
+            }
+          });
+        }
+      
+        // Attach the click event handler to all delete buttons
+        document.querySelectorAll('.btn-danger').forEach(button => {
+          button.addEventListener('click', handleDeleteClick);
+        });
+      </script>
+</body>
+</html>

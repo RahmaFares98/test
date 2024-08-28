@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <title>Create Order Page</title>
+
+    <style>
+        /* styles.css */
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            /* background: linear-gradient(to left, #1c3e52, #EBE6E0); Linear gradient background */
+
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #C04000;
+            color: #FFE5B4;
+            height: 100vh;
+            /* position: fixed; */
+            top: 0;
+            left: 0;
+            padding: 25px;
+        }
+
+        .sidebar h2 {
+            font-size: 25px;
+            margin: 0 0 20px 0;
+        }
+
+        .sidebar a {
+            color: #FFE5B4;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #55371e;
+            padding: 5px;
+            color: #FFE5B4;
+        }
+
+        /* Hide the sub-menu by default */
+        .sub-menu {
+            display: none;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* Show the sub-menu when hovering over the parent list item */
+        .nav-item:hover .sub-menu {
+            display: block;
+        }
+
+        /* Optional: Style for sub-menu items */
+        .sub-menu .nav-item {
+            margin: 0;
+        }
+
+        .sub-menu .nav-link {
+            padding-left: 20px;
+            /* Indent sub-menu items */
+        }
+
+        ul li {
+            text-decoration: none !important;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        img {
+            padding-right: 10px;
+            padding-top: 5px;
+        }
+
+        .form-container {
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 7%;
+        }
+
+        .sidebar a {
+            color: #FFE5B4;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #FFE5B4;
+            padding: 5px;
+            color: #1A4862;
+        }
+
+        .form-container h2 {
+            margin-bottom: 2.5rem;
+            color: #C04000;
+            font-size: 50px;
+            text-align: center;
+            font-weight: bolder;
+
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #C04000;
+            font-size: 20px;
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+        }
+
+        .btn-primary {
+            background-color: #C04000;
+            border-color: #C04000;
+            font-weight: bold;
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #FFE5B4;
+            color: #C04000;
+            font-weight: bold;
+            border-color: #C04000;
+        }
+
+        /* Hide the sub-menu by default */
+        .sub-menu {
+            display: none;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* Show the sub-menu when hovering over the parent list item */
+        .nav-item:hover .sub-menu {
+            display: block;
+        }
+
+        /* Optional: Style for sub-menu items */
+        .sub-menu .nav-item {
+            margin: 0;
+        }
+
+        .sub-menu .nav-link {
+            padding-left: 20px;
+            /* Indent sub-menu items */
+        }
+
+
+        /* table style */
+        .form-container {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .styled-table thead tr {
+            background-color: #C04000;
+            color: #FFE5B4;
+        }
+
+        .styled-table th {
+            font-size: 20px;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            font-weight: bold;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f9f9f9;
+        }
+
+        .styled-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .styled-table th {
+            font-weight: bold;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .styled-table td {
+            text-align: center;
+            color: rgb(70, 31, 31);
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block  sidebar">
+                <div class="sidebar-header">
+                    <h2><a href= "{% url 'company_dashboard' %}">Company Dashboard</a></h2>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#orders">
+                            <img src="https://cdn-icons-png.freepik.com/256/7345/7345729.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                                width="20" alt="Orders"> Orders
+                        </a>
+                        <ul class="nav flex-column ms-3 sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'create_order'%}">Create an Order</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'update_order'%}">Update an Order</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'view_orders'%}">View All Orders</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tracking">
+                            <img src="https://cdn-icons-png.freepik.com/256/14624/14624183.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                                width="20" alt="Tracking"> Tracking
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#customers">
+                            <img src="https://cdn-icons-png.freepik.com/256/2673/2673061.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                                width="20" alt="Customers"> Customers
+                        </a>
+                        <ul class="nav flex-column ms-3 sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#create-order">Create a Customer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#update-order">Update a Customer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#update-order">View All Customers</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#notifications">
+                            <img src="https://cdn-icons-png.freepik.com/256/3308/3308948.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                                width="20" alt="Notifications"> Notifications
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reports">
+                            <img src="https://cdn-icons-png.freepik.com/256/1055/1055644.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                                width="20" alt="Reports"> Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#settings">
+                            <img src="https://cdn-icons-png.freepik.com/256/11186/11186705.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid"
+                                width="20" alt="Settings"> Settings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sign_out'%}">
+                            <img src="https://cdn-icons-png.freepik.com/256/4790/4790927.png?ga=GA1.2.209331547.1723160267&semt=ais_hybrid" width="20" alt="Settings"> Sign Out
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main content -->
+            <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-4">
+                <div class="form-container">
+                    <h2>View All Orders</h2>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <!-- <th>Check Order </th> -->
+                                    <th>Company Name</th>
+                                    <th>Order Name</th>
+                                    <th>Order Code Number</th>
+                                    <th>Pick Up Location</th>
+                                    <th>Pick Off Location</th>
+                                    <th>Order Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example row -->
+                                <tr>
+                                    <!-- <th><input type="checkbox"></th> -->
+                                    <td>here goes the company name</td>
+                                    <td>order name</td>
+                                    <td>order code number</td>
+                                    <td>pick up location</td>
+                                    <td>pick off location</td>
+                                    <td><button type="submit" class="btn btn-dark">Edit</button> | <button type="submit"
+                                            class="btn btn-danger">Delete</button></td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
